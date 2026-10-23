@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_blogposts_title = get_theme_mod('latte_blogposts_title',__( 'Blog', 'latte' ));
 	$latte_blogposts_subtitle = get_theme_mod('latte_blogposts_subtitle',__( 'My thoughts.', 'latte' ));
 	$latte_blogposts_items = get_theme_mod('latte_blogposts_items', 6);

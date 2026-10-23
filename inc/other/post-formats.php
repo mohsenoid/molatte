@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /**
  * Post Format Tools - A mini library for formatting post formats.
  *

@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /**
  * Font Awesome Icons Array - 4.6.3
  */

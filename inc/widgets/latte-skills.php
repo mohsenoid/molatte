@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /**
  * Skills Widget - Latte
  */
@@ -37,17 +38,17 @@ class latte_skills_widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id('titlecolor') ); ?>"><?php esc_html_e('Title Color', 'latte'); ?></label> 
 			<br/>
-			<input class="color" id="<?php echo esc_attr( $this->get_field_id('titlecolor') ); ?>" name="<?php echo esc_attr( $this->get_field_name('titlecolor') ); ?>" type="text" value="<?php if( !empty($instance['titlecolor']) ): echo esc_html($instance['titlecolor']); else: echo'#FFFFFF'; endif; ?>" style="background:<?php if( !empty($instance['titlecolor']) ): echo esc_html($instance['titlecolor']); else: echo'#FFFFFF'; endif; ?>;" />
+			<input class="color" id="<?php echo esc_attr( $this->get_field_id('titlecolor') ); ?>" name="<?php echo esc_attr( $this->get_field_name('titlecolor') ); ?>" type="text" value="<?php if( !empty($instance['titlecolor']) ): echo latte_sanitize_color($instance['titlecolor'], 'transparent'); else: echo'#FFFFFF'; endif; ?>" style="background:<?php if( !empty($instance['titlecolor']) ): echo latte_sanitize_color($instance['titlecolor'], 'transparent'); else: echo'#FFFFFF'; endif; ?>;" />
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id('titlebackground') ); ?>"><?php esc_html_e('Title Background', 'latte'); ?></label> 
 			<br/>
-			<input class="color" id="<?php echo esc_attr( $this->get_field_id('titlebackground') ); ?>" name="<?php echo esc_attr( $this->get_field_name('titlebackground') ); ?>" type="text" value="<?php if( !empty($instance['titlebackground']) ): echo esc_html($instance['titlebackground']); else: echo'#D35400'; endif; ?>" style="background:<?php if( !empty($instance['titlebackground']) ): echo esc_html($instance['titlebackground']); else: echo'#D35400'; endif; ?>;" />
+			<input class="color" id="<?php echo esc_attr( $this->get_field_id('titlebackground') ); ?>" name="<?php echo esc_attr( $this->get_field_name('titlebackground') ); ?>" type="text" value="<?php if( !empty($instance['titlebackground']) ): echo latte_sanitize_color($instance['titlebackground'], 'transparent'); else: echo'#D35400'; endif; ?>" style="background:<?php if( !empty($instance['titlebackground']) ): echo latte_sanitize_color($instance['titlebackground'], 'transparent'); else: echo'#D35400'; endif; ?>;" />
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id('barbackground') ); ?>"><?php esc_html_e('Bar Background', 'latte'); ?></label> 
 			<br/>
-			<input class="color" id="<?php echo esc_attr( $this->get_field_id('barbackground') ); ?>" name="<?php echo esc_attr( $this->get_field_name('barbackground') ); ?>" type="text" value="<?php if( !empty($instance['barbackground']) ): echo esc_html($instance['barbackground']); else: echo'#E67E22'; endif; ?>" style="background:<?php if( !empty($instance['barbackground']) ): echo esc_html($instance['barbackground']); else: echo'#E67E22'; endif; ?>;" />
+			<input class="color" id="<?php echo esc_attr( $this->get_field_id('barbackground') ); ?>" name="<?php echo esc_attr( $this->get_field_name('barbackground') ); ?>" type="text" value="<?php if( !empty($instance['barbackground']) ): echo latte_sanitize_color($instance['barbackground'], 'transparent'); else: echo'#E67E22'; endif; ?>" style="background:<?php if( !empty($instance['barbackground']) ): echo latte_sanitize_color($instance['barbackground'], 'transparent'); else: echo'#E67E22'; endif; ?>;" />
 		</p>
 		<?php
 	}
@@ -56,24 +57,23 @@ class latte_skills_widget extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = esc_html($new_instance['title']);
 		$instance['percentage'] = intval($new_instance['percentage']);
-		$instance['titlecolor'] = esc_html($new_instance['titlecolor']);
-		$instance['titlebackground'] = esc_html($new_instance['titlebackground']);
-		$instance['barbackground'] = esc_html($new_instance['barbackground']);
+		$instance['titlecolor'] = latte_sanitize_color($new_instance['titlecolor']);
+		$instance['titlebackground'] = latte_sanitize_color($new_instance['titlebackground']);
+		$instance['barbackground'] = latte_sanitize_color($new_instance['barbackground']);
 		return $instance;
 	}
 
 	function widget($args, $instance) {
-		extract( $args );
-		?>
-			<?php echo $before_widget; ?>
+				?>
+			<?php echo $args['before_widget']; ?>
 					<div data-sr="ease-in-out wait 0.25s" class="col-md-6 col-sm-12 skill-box">
 						<div class="skillbar clearfix " data-percent="<?php if( !empty($instance['percentage']) ): echo intval($instance['percentage']); endif; ?>%">
-							<div class="skillbar-title" style="background: <?php if( !empty($instance['titlebackground']) ): echo esc_html($instance['titlebackground']); endif; ?>;"><span style="color:<?php if( !empty($instance['titlecolor']) ): echo esc_html($instance['titlecolor']); endif; ?>;"><?php if( !empty($instance['title']) ): echo esc_html($instance['title']); endif; ?></span></div>
-							<div class="skillbar-bar" style="background: <?php if( !empty($instance['barbackground']) ): echo esc_html($instance['barbackground']); endif; ?>;"></div>
+							<div class="skillbar-title" style="background: <?php if( !empty($instance['titlebackground']) ): echo latte_sanitize_color($instance['titlebackground'], 'transparent'); endif; ?>;"><span style="color:<?php if( !empty($instance['titlecolor']) ): echo latte_sanitize_color($instance['titlecolor'], 'transparent'); endif; ?>;"><?php if( !empty($instance['title']) ): echo esc_html($instance['title']); endif; ?></span></div>
+							<div class="skillbar-bar" style="background: <?php if( !empty($instance['barbackground']) ): echo latte_sanitize_color($instance['barbackground'], 'transparent'); endif; ?>;"></div>
 							<div class="skill-bar-percent"><?php if( !empty($instance['percentage']) ): echo esc_html($instance['percentage']); endif; ?>%</div>
 						</div>
 					</div>
-			<?php echo $after_widget; ?>
+			<?php echo $args['after_widget']; ?>
 		<?php
 	}
 

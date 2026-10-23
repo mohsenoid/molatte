@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /**
  * Services Widget - Latte
  */
@@ -37,7 +38,7 @@ class latte_services_widget extends WP_Widget {
 				<option value="<?php echo esc_html($key); ?>" <?php if (isset($instance['icon'])): if ($instance['icon'] == $key): echo 'selected="selected"'; endif; endif; ?>>&#x<?php echo esc_html($value); ?> <?php echo esc_html($key); ?></option>
 			<?php endforeach; ?>
 			</select>
-			<label><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/"><?php _e('Click here to see a list of icons.', 'latte'); ?></a></label>
+			<label><a target="_blank" rel="noopener noreferrer" href="https://fortawesome.github.io/Font-Awesome/icons/"><?php _e('Click here to see a list of icons.', 'latte'); ?></a></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id('image') ); ?>" name="<?php echo esc_attr( $this->get_field_name('image') ); ?>" type="hidden" value="<?php if( !empty($instance['image']) ): echo esc_url($instance['image']); endif; ?>" />
 		</p>
 		<?php elseif( isset($instance['type']) && $instance['type'] == 1 ): ?>
@@ -76,14 +77,13 @@ class latte_services_widget extends WP_Widget {
 	}
  
 	function widget($args, $instance) {
-		extract( $args );
-		?>
-			<?php echo $before_widget; ?>
+				?>
+			<?php echo $args['before_widget']; ?>
 					<div data-sr="ease-in-out wait 0.25s" class="col-md-4 col-sm-6 text-center service-box">
 						<div class="service-item">
 						<?php if( !empty($instance['icon']) || !empty($instance['image']) ): ?>
 							<div class="service-icon">
-								<a <?php if (isset($instance['newwindow'])) : if (1 == $instance['newwindow']) echo 'target="_blank"'; endif ?> <?php if( !empty($instance['link']) ): echo 'href="'.esc_url($instance['link']).'"'; endif; ?>>
+								<a <?php if (isset($instance['newwindow'])) : if (1 == $instance['newwindow']) echo 'target="_blank" rel="noopener noreferrer"'; endif ?> <?php if( !empty($instance['link']) ): echo 'href="'.esc_url($instance['link']).'"'; endif; ?>>
 								<?php if( isset($instance['type']) && $instance['type'] == 0 ): ?>
 									<i class="fa <?php echo esc_html($instance['icon']); ?>"></i>
 								<?php elseif( isset($instance['type']) && $instance['type'] == 1 ): ?>
@@ -100,7 +100,7 @@ class latte_services_widget extends WP_Widget {
 						<?php endif; ?>
 						</div>
 					</div>
-			<?php echo $after_widget; ?>
+			<?php echo $args['after_widget']; ?>
 		<?php
 	}
 

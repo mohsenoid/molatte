@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /**
  * Custom CSS for wp_head
  */
@@ -23,56 +24,56 @@ function latte_custom_css() {
 <?php if( isset($latte_intro_display) && $latte_intro_display != 1 ): ?>
 <?php if(!empty($latte_intro_background_color)) : ?>
 .intro {
-	background: <?php echo esc_html($latte_intro_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_intro_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_about_display) && $latte_about_display != 1 ): ?>
 <?php if(!empty($latte_about_background_color)) : ?>
 .about {
-	background: <?php echo esc_html($latte_about_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_about_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_social_display) && $latte_social_display != 1 ): ?>
 <?php if(!empty($latte_social_background_color)) : ?>
 .social {
-	background: <?php echo esc_html($latte_social_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_social_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_services_display) && $latte_services_display != 1 ): ?>
 <?php if(!empty($latte_services_background_color)) : ?>
 .services {
-	background: <?php echo esc_html($latte_services_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_services_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_subscribe_display) && $latte_subscribe_display != 1 ): ?>
 <?php if(!empty($latte_subscribe_background_color)) : ?>
 .subscribe {
-	background: <?php echo esc_html($latte_subscribe_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_subscribe_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_skills_display) && $latte_skills_display != 1 ): ?>
 <?php if(!empty($latte_skills_background_color)) : ?>
 .skills {
-	background: <?php echo esc_html($latte_skills_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_skills_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php if( isset($latte_blogposts_display) && $latte_blogposts_display != 1 ): ?>
 <?php if(!empty($latte_blogposts_background_color)) : ?>
 .blogposts {
-	background: <?php echo esc_html($latte_blogposts_background_color); ?>;
+	background: <?php echo latte_sanitize_color($latte_blogposts_background_color, 'transparent'); ?>;
 }
 <?php endif; ?>
 <?php endif; ?>
 <?php endif; ?>
 <?php if ( has_header_image() ) : ?>
 .archive-header {
-	background: transparent url("<?php echo( get_header_image() ); ?>") repeat scroll center center / cover;
+	background: transparent url("<?php echo esc_url( get_header_image() ); ?>") repeat scroll center center / cover;
 }
 <?php endif; ?>
 </style>

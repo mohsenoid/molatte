@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 /*
  * Register settings for the Theme Customizer.
 */
@@ -20,7 +21,32 @@ function latte_customizer_upsell() {
 add_action( 'customize_controls_enqueue_scripts', 'latte_customizer_upsell' );
 
 function latte_sanitize_text( $input ) {
-	return $input;
+	return sanitize_text_field( $input );
+}
+
+function latte_sanitize_number( $input, $setting ) {
+	$value = absint( $input );
+	return $value > 0 ? $value : $setting->default;
+}
+
+/**
+ * Accepts #rgb, #rrggbb, #rrggbbaa, rgb() and rgba() only.
+ * Returns the fallback when the value is not a valid colour.
+ */
+function latte_sanitize_color( $color, $fallback = '' ) {
+	$color = trim( (string) $color );
+	$num = '\s*-?\d{1,3}(?:\.\d+)?%?\s*';
+	$alpha = '\s*(?:0|1|0?\.\d+|1\.0+)\s*';
+	if ( preg_match( '/^#(?:[0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $color ) ||
+		preg_match( '/^rgb\(' . $num . ',' . $num . ',' . $num . '\)$/i', $color ) ||
+		preg_match( '/^rgba\(' . $num . ',' . $num . ',' . $num . ',' . $alpha . '\)$/i', $color ) ) {
+		return $color;
+	}
+	return $fallback;
+}
+
+function latte_sanitize_color_setting( $input, $setting ) {
+	return latte_sanitize_color( $input, $setting->default );
 }
 
 function latte_sanitize_textbox( $textbox ) {
@@ -57,7 +83,7 @@ function latte_customize_register($wp_customize) {
 	}
 	class Latte_Subscribe_Widgets_Area extends WP_Customize_Control {
 		public function render_content() {
-			echo __('The main content of this section is customizable in: Customize > Subscribe Section > Subscribe Section. There you must add the "SendinBlue Newsletter." But first you will need to install <a href="https://wordpress.org/plugins/mailin/" target="_blank">SendinBlue plugin</a>.','latte');
+			echo __('The main content of this section is customizable in: Customize > Subscribe Section > Subscribe Section. There you must add the "SendinBlue Newsletter." But first you will need to install <a href="https://wordpress.org/plugins/mailin/" target="_blank" rel="noopener noreferrer">SendinBlue plugin</a>.','latte');
 			echo '<br/><br/>';
 			echo __('After installing the plugin, you need to navigate to Sendinblue > Home, and configure the plugin.','latte');
 			echo '<br/><br/>';
@@ -422,7 +448,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_intro_background_color', array(
 		'default' => 'rgba(0, 0, 0, 0.7)',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -543,7 +569,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_about_background_color', array(
 		'default' => '#F5F5F5',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -724,7 +750,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_social_background_color', array(
 		'default' => 'rgba(0, 0, 0, 0.7)',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -779,7 +805,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_services_background_color', array(
 		'default' => '#F5F5F5',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -843,7 +869,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_subscribe_background_color', array(
 		'default' => 'rgba(0, 0, 0, 0.7)',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -898,7 +924,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_skills_background_color', array(
 		'default' => '#F5F5F5',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 
@@ -953,7 +979,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_blogposts_items', array(
 		'default' => 6,
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'latte_sanitize_text'
+		'sanitize_callback' => 'latte_sanitize_number'
 	));
 
 	$wp_customize->add_control( 'latte_blogposts_items', array(
@@ -988,7 +1014,7 @@ function latte_customize_register($wp_customize) {
 	$wp_customize->add_setting( 'latte_blogposts_background_color', array(
 		'default' => '#F5F5F5',
 		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
+		'sanitize_callback' => 'latte_sanitize_color_setting',
 		'transport' => 'postMessage'
 	));
 

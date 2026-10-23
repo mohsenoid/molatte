@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_services_title = get_theme_mod('latte_services_title',__( 'Services', 'latte' ));
 	$latte_services_subtitle = get_theme_mod('latte_services_subtitle',__( 'Things that I work on.', 'latte' ));
 ?>

@@ -23,7 +23,7 @@
 				<div class="col-lg-8 col-md-8">
 			<?php endif; ?>
 					<article class="search-results">
-						<h2><?php _e( 'Search results for:', 'latte' ); ?> <?php echo get_search_query(); ?></h2>
+						<h2><?php _e( 'Search results for:', 'latte' ); ?> <?php echo esc_html( get_search_query() ); ?></h2>
 					</article>
 				<?php if ( have_posts() ) : ?> 
 					<?php while ( have_posts() ) : the_post(); ?>

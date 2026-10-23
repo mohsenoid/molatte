@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_subscribe_title = get_theme_mod('latte_subscribe_title',__( 'Subscribe', 'latte' ));
 	$latte_subscribe_subtitle = get_theme_mod('latte_subscribe_subtitle',__( 'I won\'t spam you, promise!', 'latte' ));
 ?>

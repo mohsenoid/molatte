@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 class Latte_Welcome {
 
 	public function __construct() {
@@ -41,9 +42,6 @@ class Latte_Welcome {
 	}
 
 	public function latte_welcome_screen() {
-		require_once( ABSPATH . 'wp-load.php' );
-		require_once( ABSPATH . 'wp-admin/admin.php' );
-		require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		?>
 		<div class="wrap about-wrap">
 

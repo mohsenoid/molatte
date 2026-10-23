@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_intro_avatar = get_theme_mod('latte_intro_avatar', get_template_directory_uri().'/assets/images/avatar.jpg' );
 	$latte_intro_scroll = get_theme_mod('latte_intro_scroll', '#about' );
 ?>

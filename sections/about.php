@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_about_title = get_theme_mod('latte_about_title',__( 'About Me', 'latte' ));
 	$latte_about_subtitle = get_theme_mod('latte_about_subtitle',__( 'Here are some things that you should know about me.', 'latte' ));
 	$latte_about_avatar = get_theme_mod('latte_about_avatar', get_template_directory_uri().'/assets/images/383x383.png');

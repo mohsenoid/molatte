@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 function latte_add_customizer_custom_category_controls( $wp_customize ) {
 	class Latte_Category_Dropdown_Control extends WP_Customize_Control {

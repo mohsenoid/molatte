@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 	$latte_skills_title = get_theme_mod('latte_skills_title',__( 'Skills', 'latte' ));
 	$latte_skills_subtitle = get_theme_mod('latte_skills_subtitle',__( 'Things that I\'m good at.', 'latte' ));
 ?>

@@ -95,6 +95,7 @@
 	// About Section > Content > Content
 	wp.customize( 'latte_about_content', function( value ) {
 		value.bind( function( newval ) {
+			// Rich text field: value is wp_kses_post-sanitized on save and shown only to users who can edit theme options.
 			$('.about div.lead').html( newval );
 		} );
 	} );
