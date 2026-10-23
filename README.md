@@ -1,11 +1,12 @@
-# Latte #
-Latte is a one-page parallax WordPress theme for developers, designers & freelancers, to showcase their profile. It comes with many options, including services section, and more. Plus, it's easy to customize! You don't need a page builder or a drag & drop editor. Every thing can be customized straight from the WordPress Customizer.
+# MoLatte #
+MoLatte is a personal fork of [Latte](https://www.hardeepasrani.com/portfolio/latte/) by Hardeep Asrani, maintained at https://github.com/mohsenoid/molatte. Latte is a one-page parallax WordPress theme for developers, designers & freelancers, to showcase their profile. It comes with many options, including services section, and more. Plus, it's easy to customize! You don't need a page builder or a drag & drop editor. Every thing can be customized straight from the WordPress Customizer.
 
 # Installation #
-1. After downloading the zip file, go to Appearance > Themes and click on the *Install Themes* tab.
-2. Click on the *Upload* link.
-3. Upload the zip file that you downloaded and click *Install Now*.
-4. Click *Activate* to use the theme you just installed.
+1. Download the zip file from the [Releases](https://github.com/mohsenoid/molatte/releases) page.
+2. Go to Appearance > Themes and click on the *Install Themes* tab.
+3. Click on the *Upload* link.
+4. Upload the zip file that you downloaded and click *Install Now*.
+5. Click *Activate* to use the theme you just installed.
 
 # Copyright, License & Other info #
 
@@ -94,3 +95,12 @@ Copyright © 2015, kaboompics, CC0 Public Domain, https://creativecommons.org/pu
 - Loading imagesloader from the core now.
 - Updated Sendinblue instructions.
 - Fixed word wrapping in homepage.
+
+## Version 3.0 ##
+
+- Forked as MoLatte; footer signature now links to the fork's repository.
+- Updated Font Awesome to 4.7.0.
+- Updated Bootstrap to 3.4.1 (security fixes).
+- Replaced removed create_function() with closures for PHP 8 compatibility.
+- Security hardening: sanitizers for Customizer settings and colours, output escaping, rel="noopener noreferrer" on external links, HTTPS URLs, direct-access guards on PHP files.
+- Fixed imagesloaded enqueue and simplified the welcome screen.
