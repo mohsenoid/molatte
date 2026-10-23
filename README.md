@@ -18,29 +18,23 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 Alpha Color Picker, https://github.com/BraadMartin/components/tree/master/customizer/alpha-color-picker
 Copyright © 2015 Braad Martin, Inc, GPL License (version not specified), http://www.gnu.org/licenses/gpl-3.0.en.html
 
-Bootstrap, http://getbootstrap.com/
-Copyright © 2011-2015 Twitter, Inc, MIT License, http://www.opensource.org/licenses/MIT
+Bootstrap 3.4.1, https://getbootstrap.com/
+Copyright © 2011-2019 Twitter, Inc, MIT License, http://www.opensource.org/licenses/MIT
 
-classie.js, https://github.com/desandro/classie
-Copyright © 2014, desandro, MIT License, http://www.opensource.org/licenses/MIT
-
-FontAwesome, http://fontawesome.io/
+FontAwesome 4.7.0, http://fontawesome.io/
 Copyright © 2015, Dave Gandy,
 Font Awesome licensed under SIL OFL 1.1, http://scripts.sil.org/OFL
 Code licensed under MIT License, http://www.opensource.org/licenses/MIT
 Documentation licensed under CC BY 3.0, http://creativecommons.org/licenses/by/3.0/
 
-jquery.matchHeight.js, http://brm.io/jquery-match-height/
+jquery.matchHeight.js 0.7.2, http://brm.io/jquery-match-height/
 Copyright © 2014, liabru, MIT License, http://www.opensource.org/licenses/MIT
 
-parllax.js, http://pixelcog.github.io/parallax.js/
-Copyright © 2015, PixelCog Inc, MIT License, http://www.opensource.org/licenses/MIT
+parallax.js 1.5.0, http://pixelcog.github.io/parallax.js/
+Copyright © 2016, PixelCog Inc, MIT License, http://www.opensource.org/licenses/MIT
 
 Post Format Tools from Hybrid Core , https://github.com/justintadlock/hybrid-core
 2008 – 2015 © Justin Tadlock, GNU GPL, version 2 or later, http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-
-scrollReveal.js, https://scrollrevealjs.org/
-Copyright © 2015, Julian Lloyd, MIT License, http://www.opensource.org/licenses/MIT
 
 ## Images ##
 
@@ -104,3 +98,8 @@ Copyright © 2015, kaboompics, CC0 Public Domain, https://creativecommons.org/pu
 - Replaced removed create_function() with closures for PHP 8 compatibility.
 - Security hardening: sanitizers for Customizer settings and colours, output escaping, rel="noopener noreferrer" on external links, HTTPS URLs, direct-access guards on PHP files.
 - Fixed imagesloaded enqueue and simplified the welcome screen.
+
+## Version 3.0.1 ##
+
+- Replaced scrollReveal and classie.js with small native scripts; updated parallax.js to 1.5.0 and jquery.matchHeight to 0.7.2.
+- Scripts and styles are now versioned with the theme version, so browsers pick up updated files after a release (fixes a hidden parallax background caused by stale cached scripts).

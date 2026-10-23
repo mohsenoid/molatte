@@ -7,8 +7,10 @@ jQuery(window).load(function() {
 	}
 
 	if( latte_script_var.latte_animations_display != 1 ) {
-		/* scrollReval */
-		window.sr = new scrollReveal();
+		/* Scroll reveal */
+		if ( window.latteReveal ) {
+			window.latteReveal();
+		}
 	}
 
 });
@@ -41,28 +43,28 @@ jQuery(document).ready(function($) {
 		body = document.body;
 
 		showLeftPush.onclick = function() {
-			classie.toggle( this, 'active' );
-			classie.toggle( body, 'pmenu-push-toright' );
-			if (classie.has(showLeftPush,"fa-bars")) {
-				classie.remove(showLeftPush,"fa-bars");
-				classie.add(showLeftPush,"fa-times");
+			this.classList.toggle( 'active' );
+			body.classList.toggle( 'pmenu-push-toright' );
+			if ( showLeftPush.classList.contains( 'fa-bars' ) ) {
+				showLeftPush.classList.remove( 'fa-bars' );
+				showLeftPush.classList.add( 'fa-times' );
 			} else {
-				classie.add(showLeftPush,"fa-bars");
+				showLeftPush.classList.add( 'fa-bars' );
 			}
-			classie.toggle( menuLeft, 'pmenu-open' );
+			menuLeft.classList.toggle( 'pmenu-open' );
 			disableOther( 'showLeftPush' );
 		};
 		hideLeftPush.onclick = function() {
-			classie.toggle( this, 'active' );
-			classie.toggle( body, 'pmenu-push-toright' );
-			classie.toggle( menuLeft, 'pmenu-open' );
+			this.classList.toggle( 'active' );
+			body.classList.toggle( 'pmenu-push-toright' );
+			menuLeft.classList.toggle( 'pmenu-open' );
 			disableOther( 'hideLeftPush' );
-			classie.add(showLeftPush,"fa-bars");
+			showLeftPush.classList.add( 'fa-bars' );
 		};
 
 		function disableOther( button ) {
 			if( button !== 'showLeftPush' ) {
-				classie.toggle( showLeftPush, 'disabled' );
+				showLeftPush.classList.toggle( 'disabled' );
 			}
 		}
 	}
