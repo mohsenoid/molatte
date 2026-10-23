@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Editors / IDEs
+.idea/
+.vscode/
+*.swp
+
+# Local tooling
+.claude/settings.local.json
+node_modules/
